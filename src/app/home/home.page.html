@@ -11,3 +11,37 @@
     </ion-toolbar>
   </ion-header>
 </ion-content>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Recipe Search</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-input
+    label="Ingredients"
+    placeholder="e.g. chicken, rice, tomato"
+    [(ngModel)]="ingredients">
+  </ion-input>
+
+  <ion-button expand="block" (click)="searchRecipes()">
+    Search
+  </ion-button>
+
+  <ion-spinner *ngIf="isLoading"></ion-spinner>
+
+  <ion-card *ngFor="let recipe of recipes">
+    <img [src]="recipe.image" />
+    <ion-card-header>
+      <ion-card-title>{{ recipe.title }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-button fill="outline">
+        Details
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
