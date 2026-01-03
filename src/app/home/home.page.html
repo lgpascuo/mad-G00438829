@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ studentNumber }}</ion-title>
+
+    <ion-icon slot="end" name="heart-outline" size="large"></ion-icon>
+    <ion-icon slot="end" name="settings-outline" size="large"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-item>
+    <ion-input
+      label="Ingredients"
+      labelPlacement="stacked"
+      placeholder="e.g. chicken, rice, garlic"
+      [(ngModel)]="ingredients">
+    </ion-input>
+  </ion-item>
+
+  <ion-button
+    expand="block"
+    class="ion-margin-top"
+    (click)="searchRecipes()">
+    Search Recipes
+  </ion-button>
+
+  <ion-list *ngIf="recipes.length > 0">
+    <ion-item *ngFor="let recipe of recipes">
+      <ion-thumbnail slot="start">
+        <ion-img [src]="recipe.image"></ion-img>
+      </ion-thumbnail>
+      <ion-label>
+        {{ recipe.title }}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
