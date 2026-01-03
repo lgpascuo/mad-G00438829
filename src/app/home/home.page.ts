@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import {
   IonHeader,
   IonToolbar,
@@ -16,14 +17,14 @@ import {
   IonImg
 } from '@ionic/angular/standalone';
 import { RecipeService } from '../services/recipe.service';
-import { heartOutline, settingsOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
+import { heartOutline, settingsOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-home',
+  standalone: true,
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
-  standalone: true,
   imports: [
     CommonModule,
     FormsModule,
@@ -46,9 +47,11 @@ export class HomePage {
   studentNumber = 'G00438829';
   ingredients = '';
   recipes: any[] = [];
-  isLoading = false;
 
-  constructor(private recipeService: RecipeService) {
+  constructor(
+    private recipeService: RecipeService,
+    private router: Router
+  ) {
     addIcons({ heartOutline, settingsOutline });
   }
 
@@ -58,19 +61,14 @@ export class HomePage {
       return;
     }
 
-    this.isLoading = true;
-
     this.recipeService
       .searchByIngredients(this.ingredients)
-      .subscribe({
-        next: results => {
-          this.recipes = results;
-          this.isLoading = false;
-        },
-        error: err => {
-          console.error(err);
-          this.isLoading = false;
-        }
+      .subscribe(results => {
+        this.recipes = results;
       });
+  }
+
+  openRecipe(id: number) {
+    this.router.navigate(['/recipe', id]);
   }
 }

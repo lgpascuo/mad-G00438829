@@ -2,13 +2,22 @@
   <ion-toolbar>
     <ion-title>{{ studentNumber }}</ion-title>
 
-    <ion-icon slot="end" name="heart-outline" size="large"></ion-icon>
-    <ion-icon slot="end" name="settings-outline" size="large"></ion-icon>
+    <ion-icon
+      slot="end"
+      name="heart-outline"
+      size="large">
+    </ion-icon>
+
+    <ion-icon
+      slot="end"
+      name="settings-outline"
+      size="large">
+    </ion-icon>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-
+<ion-content>
+  <div class="content-container ion-padding">
   <ion-item>
     <ion-input
       label="Ingredients"
@@ -18,22 +27,22 @@
     </ion-input>
   </ion-item>
 
-  <ion-button
-    expand="block"
-    class="ion-margin-top"
-    (click)="searchRecipes()">
+  <ion-button expand="block" class="ion-margin-top" (click)="searchRecipes()">
     Search Recipes
   </ion-button>
 
-  <ion-list *ngIf="recipes.length > 0">
-    <ion-item *ngFor="let recipe of recipes">
+  <ion-list *ngIf="recipes.length">
+    <ion-item
+      *ngFor="let recipe of recipes"
+      button
+      (click)="openRecipe(recipe.id)">
+
       <ion-thumbnail slot="start">
         <ion-img [src]="recipe.image"></ion-img>
       </ion-thumbnail>
-      <ion-label>
-        {{ recipe.title }}
-      </ion-label>
+
+      <ion-label>{{ recipe.title }}</ion-label>
     </ion-item>
   </ion-list>
-
+</div>
 </ion-content>

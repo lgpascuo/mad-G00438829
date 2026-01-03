@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +11,24 @@ export class RecipeService {
 
   constructor(private http: HttpClient) {}
 
-  searchByIngredients(ingredients: string): Observable<any[]> {
+  searchByIngredients(ingredients: string) {
     return this.http.get<any[]>(
       `${this.baseUrl}/findByIngredients`,
       {
         params: {
           ingredients,
           number: '10',
+          apiKey: environment.spoonacularApiKey
+        }
+      }
+    );
+  }
+
+  getRecipeDetails(id: number) {
+    return this.http.get<any>(
+      `${this.baseUrl}/${id}/information`,
+      {
+        params: {
           apiKey: environment.spoonacularApiKey
         }
       }

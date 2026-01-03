@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ recipe?.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" *ngIf="recipe">
+
+  <ion-img [src]="recipe.image"></ion-img>
+
+  <h2>Ingredients</h2>
+  <ion-list>
+    <ion-item *ngFor="let ingredient of recipe.extendedIngredients">
+      <ion-label>{{ ingredient.original }}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <h2>Instructions</h2>
+  <p [innerHTML]="recipe.instructions"></p>
+
+</ion-content>
