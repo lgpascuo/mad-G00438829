@@ -1,18 +1,20 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{ studentNumber }}</ion-title>
 
-    <ion-icon
-      slot="end"
-      name="heart-outline"
-      size="large">
-    </ion-icon>
+    <ion-title slot="start">
+      {{ studentNumber }}
+    </ion-title>
 
-    <ion-icon
-      slot="end"
-      name="settings-outline"
-      size="large">
-    </ion-icon>
+    <ion-buttons slot="end">
+      <ion-button fill="clear">
+        <ion-icon name="heart-outline"></ion-icon>
+      </ion-button>
+
+      <ion-button fill="clear">
+        <ion-icon name="settings-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
@@ -20,9 +22,9 @@
   <div class="content-container ion-padding">
   <ion-item>
     <ion-input
-      label="Ingredients"
+      label="Enter ingredients"
       labelPlacement="stacked"
-      placeholder="e.g. chicken, rice, garlic"
+      placeholder="e.g. carrots, beef, potatoes"
       [(ngModel)]="ingredients">
     </ion-input>
   </ion-item>

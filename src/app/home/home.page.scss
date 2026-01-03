@@ -1,5 +1,4 @@
 .content-container {
-  max-width: max-content;
   margin: 0 auto;
 }
 
@@ -11,11 +10,24 @@ ion-item {
   --inner-padding-end: 12px;
 }
 
-ion-toolbar ion-icon {
-   margin-left: 12px;
-   align-items: flex-end;
+ion-toolbar ion-button {
+  margin-left: 4px;
 }
 
+
 ion-title {
-  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: large;
 }
+
+ion-input {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: large;
+}
+
+ion-button {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: x-large;
+}
+
+
